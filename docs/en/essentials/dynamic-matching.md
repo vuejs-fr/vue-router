@@ -1,10 +1,10 @@
 # Concordance dynamique de route
 
-Vous allez très souvent associer des routes avec un motif donné à un même composant. Par exemple nous pourrions avoir le composant `User` qui devrait être rendu pour tous les utilisateurs mais avec différents identifiants. Avec `vue-router` nous pouvons utiliser des segments dynamique dans le chemin de la route pour réaliser cela :
+Vous allez très souvent associer des routes avec un motif donné à un même composant. Par exemple nous pourrions avoir le composant `User` qui devrait être rendu pour tous les utilisateurs mais avec différents identifiants. Avec `vue-router` nous pouvons utiliser des segments dynamiques dans le chemin de la route pour réaliser cela :
 
 ``` js
 const User = {
-  template: '<div>Utilistateur</div>'
+  template: '<div>Utilisateur</div>'
 }
 
 const router = new VueRouter({
@@ -15,9 +15,9 @@ const router = new VueRouter({
 })
 ```
 
-Maintenant des URLs comme `/utilisateur/foo` et `/utilisateur/bar` seront chacun associé à la même route.
+Maintenant des URLs comme `/utilisateur/foo` et `/utilisateur/bar` seront chacune associée à la même route.
 
-Un segment dynamique se repère avec les deux-points `:`. Quand une route concorde, la valeur du segment dynamique est exposé via `this.$route.params` dans tous les composants. Et donc, nous pouvons faire le rendu de l'identifiant de l'utilisateur courant en mettant à jour le template de `User` ainsi :
+Un segment dynamique se repère avec les deux-points `:`. Quand une route concorde, la valeur du segment dynamique est exposée via `this.$route.params` dans tous les composants. Et donc, nous pouvons faire le rendu de l'identifiant de l'utilisateur courant en mettant à jour le template de `User` ainsi :
 
 ``` js
 const User = {
@@ -27,7 +27,7 @@ const User = {
 
 Vous pouvez regarder un exemple en ligne [ici](http://jsfiddle.net/yyx990803/4xfa2f19/).
 
-Vous pouvez avoir plusieurs segments dynamique pour une même route, et ils seront associés aux champs associé dans `$route.params`. Des exemples :
+Vous pouvez avoir plusieurs segments dynamiques pour une même route, et ils seront associés aux champs associés dans `$route.params`. Des exemples :
 
 | motif | chemin concordant | $route.params |
 |---------|------|--------|
@@ -38,9 +38,9 @@ En plus de `$route.params`, l'objet `$route` expose également d'autres informat
 
 ### Réactivité au changement de paramètres
 
-Une chose à noter quand vous utilisez des routes avec des paramètres (segments), c'est que lors de la navigation de l'utilisateur de `/utilisateur/foo` vers `/utilisateur/bar`, **la même instance de composant va être réutilisée**. Puisque les deux routes font le rendu du même composant, cela est plus performant que de détruire l'ancienne instance et dans créer une nouvelle. **Cepenadant, cela signifie également que les hooks de cycle de vie ne seront pas appelé**.
+Une chose à noter quand vous utilisez des routes avec des paramètres (segments), c'est que lors de la navigation de l'utilisateur de `/utilisateur/foo` vers `/utilisateur/bar`, **la même instance de composant va être réutilisée**. Puisque les deux routes font le rendu du même composant, cela est plus performant que de détruire l'ancienne instance et dans créer une nouvelle. **Cependant, cela signifie également que les hooks de cycle de vie ne seront pas appelés**.
 
-Pour réagir au changement de paramètres dans le même composant, vous pouvez simplement observer l'objet `$route` :
+Pour réagir aux changements de paramètres dans le même composant, vous pouvez simplement observer l'objet `$route` :
 
 ``` js
 const User = {
@@ -53,7 +53,7 @@ const User = {
 }
 ```
 
-Ou, utiliser la fonction de sécurisation `beforeRouteUpdate` introduite avec la 2.2 :
+Ou utiliser la fonction de sécurisation `beforeRouteUpdate` introduite avec la 2.2 :
 
 ``` js
 const User = {
@@ -67,8 +67,8 @@ const User = {
 
 ### Motifs de concordance avancés
 
-`vue-router` utilise [path-to-regexp](https://github.com/pillarjs/path-to-regexp) comme moteur de concordance de chemin, il supporte donc plusieurs motif de cordance avancés tel que la présence optionnel de segments dynamiques, aucun ou plusieurs motifs, plus d'options par motifs, et même des motifs d'expressions régulières personnalisés. Consultez cette [documentation](https://github.com/pillarjs/path-to-regexp#parameters) pour utiliser ces motifs avancés et [cet exemple](https://github.com/vuejs/vue-router/blob/dev/examples/route-matching/app.js) pour les utiliser avec `vue-router`.
+`vue-router` utilise [path-to-regexp](https://github.com/pillarjs/path-to-regexp) comme moteur de concordance de chemin, il supporte donc plusieurs motifs de concordance avancés tel que la présence optionnelle de segments dynamiques, aucun ou plusieurs motifs, plus d'options par motifs, et même des motifs d'expressions régulières personnalisés. Consultez cette [documentation](https://github.com/pillarjs/path-to-regexp#parameters) pour utiliser ces motifs avancés et [cet exemple](https://github.com/vuejs/vue-router/blob/dev/examples/route-matching/app.js) pour les utiliser avec `vue-router`.
 
 ### Priorité de concordance
 
-Parfois la même URL peut être addressée par de multiples routes. Dans ce cas, la priorité de concordance est déterminée par l'ordre de la définition des routes : plus la route est définie tôt, plus sa priorité est élevée.
+Parfois la même URL peut être adressée par de multiples routes. Dans ce cas, la priorité de concordance est déterminée par l'ordre de la définition des routes : plus la route est définie tôt, plus sa priorité est élevée.
