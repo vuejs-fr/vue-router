@@ -1,12 +1,12 @@
-# Sécurisations de navigation
+# Interceptions de navigation
 
-Comme le nom le suggère, la sécurisation de navigation fournie par `vue-router` est principalement utilisée pour sécuriser sa navigation avec des redirections ou des annulations d'accès. Il y a plusieurs hooks disponibles lors du processus de navigation : globaux, par routes ou intra-composant.
+Comme le nom le suggère, l'interception de navigation fournie par `vue-router` est principalement utilisée pour intercepter la navigation avec des redirections ou des annulations d'accès. Il y a plusieurs hooks disponibles lors du processus de navigation : globaux, par route ou par composant.
 
-Souvenez-vous de cela : **le changement de paramètre ou de query ne va pas lancer de sécurisation d'entrée ou de sortie de navigation**. Vous pouvez toujours [observer l'objet `$route`](../essentials/dynamic-matching.md#reacting-to-params-changes) pour réagir à ces changements, ou utiliser la fonction `beforeRouteUpdate` d'une sécurisation intra-composant.
+Souvenez-vous de cela : **le changement de paramètre ou de query ne va pas lancer d'interception d'entrée ou de sortie de navigation**. Vous pouvez toujours [observer l'objet `$route`](../essentials/dynamic-matching.md#reacting-to-params-changes) pour réagir à ces changements, ou utiliser la fonction `beforeRouteUpdate` d'une interception par composant.
 
-### Sécurisation globale
+### Interception globale
 
-Vous pouvez abonner une sécurisation d'entrée en utilisant `router.beforeEach` :
+Vous pouvez abonner une interception d'entrée en utilisant `router.beforeEach` :
 
 ``` js
 const router = new VueRouter({ ... })
@@ -16,9 +16,9 @@ router.beforeEach((to, from, next) => {
 })
 ```
 
-Les sécurisations d'entrées globales sont appelées lors de l'ordre de création, chaque fois qu'une navigation est déclenchée. Les sécurisations peuvent être résolues de manière asynchrone, et la navigation est considérée comme **en attente** avant que tous les hooks ne soient résolues.
+Les interceptions d'entrées globales sont appelées lors de l'ordre de création, chaque fois qu'une navigation est déclenchée. Les interceptions peuvent être résolues de manière asynchrone, et la navigation est considérée comme **en attente** avant que tous les hooks ne soient résolues.
 
-Chaque fonction de sécurisation reçoit trois arguments :
+Chaque fonction d'interception reçoit trois arguments :
 
 - **`to: Route`**: L'[objet `Route`](../api/route-object.md) cible vers lequel on navigue.
 
@@ -36,15 +36,15 @@ Chaque fonction de sécurisation reçoit trois arguments :
 
 **Assurez-vous de toujours appeler la fonction `next`, sinon le hook ne sera jamais résolu.**
 
-### Résolutions des sécurisations globales
+### Résolutions des interceptions globales
 
 > Nouveau dans la 2.5.0
 
-Dans la 2.5.0+ vous pouvez abonner une sécurisation globale avec `router.beforeResolve`. Ceci est similaire a `router.beforeEach`, mais la différence est qu'elle sera appelée juste après que la navigation soit confirmée, **après que toutes les sécurisations intra-composants et les composants de route asynchrone ai été résolus**.
+Dans la 2.5.0+ vous pouvez abonner une interception globale avec `router.beforeResolve`. Ceci est similaire a `router.beforeEach`, mais la différence est qu'elle sera appelée juste après que la navigation soit confirmée, **après que toutes les interceptions par composants et les composants de route asynchrone ai été résolus**.
 
 ### Hooks de sortie globaux
 
-Vous pouvez également abonner des hooks de sortie, cependant, à la différence des sécurisations, ces hooks ne fournissent pas de fonction `next` et n'affecte pas la navigation :
+Vous pouvez également abonner des hooks de sortie, cependant, à la différence des interceptions, ces hooks ne fournissent pas de fonction `next` et n'affecte pas la navigation :
 
 ``` js
 router.afterEach((to, from) => {
@@ -52,9 +52,9 @@ router.afterEach((to, from) => {
 })
 ```
 
-### Sécurisation par route
+### Interception par route
 
-Vous pouvez définir la sécurisation `beforeEnter` directement sur l'objet de configuration d'une route :
+Vous pouvez définir la interception `beforeEnter` directement sur l'objet de configuration d'une route :
 
 ``` js
 const router = new VueRouter({
@@ -70,11 +70,11 @@ const router = new VueRouter({
 })
 ```
 
-Ces sécurisations ont exactement le même effet que les sécurisations globales d'entrée.
+Ces interceptions ont exactement le même effet que les interceptions globales d'entrée.
 
-### Sécurisation intra-composants
+### Interception par composant
 
-Enfin, vous pouvez directement définir une sécurisation de navigation a l'intérieur du composant lui-même (celui passer à la configuration du routeur) avec les options suivantes :
+Enfin, vous pouvez directement définir une interception de navigation a l'intérieur du composant lui-même (celui passer à la configuration du routeur) avec les options suivantes :
 
 - `beforeRouteEnter`
 - `beforeRouteUpdate` (ajouté dans la 2.2)
@@ -86,7 +86,7 @@ const Foo = {
   beforeRouteEnter (to, from, next) {
     // appelée avant que la route vers le composant soit confirmée.
     // cette fonction n'a pas accès à l'instance du composant avec `this`,
-    // car le composant n'a pas encore été créé quand cette sécurisation est appelée !
+    // car le composant n'a pas encore été créé quand cette interception est appelée !
   },
   beforeRouteUpdate (to, from, next) {
     // appelée quand la route qui fait le rendu de ce composant change,
@@ -104,7 +104,7 @@ const Foo = {
 }
 ```
 
-La sécurisation `beforeRouteEnter` **n'**a **PAS** accès à `this`, car la sécurisation est appelée avant que la navigation soit confirmée, et le nouveau composant entrant n'a même pas encore été crée.
+L'interception `beforeRouteEnter` **n'**a **PAS** accès à `this`, car l'interception est appelée avant que la navigation soit confirmée, et le nouveau composant entrant n'a même pas encore été crée.
 
 Cependant, vous pouvez accéder à l'instance en passant dans la fonction de rappel `next`. Cette fonction de rappel va être appelée quand la navigation sera confirmée, et l'instance du composant sera passée à la fonction de rappel en tant qu'argument :
 
@@ -116,19 +116,19 @@ beforeRouteEnter (to, from, next) {
 }
 ```
 
-Vous pouvez directement accéder à `this` à l'intérieur de `beforeRouteLeave`. La sécurisation de sortie est utilisée pour empêcher l'utilisateur de quitter la route par accident alors qu'il n'a pas sauver ses modifications. La navigation peut être annulée en appelant `next(false)`.
+Vous pouvez directement accéder à `this` à l'intérieur de `beforeRouteLeave`. L'interception de sortie est utilisée pour empêcher l'utilisateur de quitter la route par accident alors qu'il n'a pas sauver ses modifications. La navigation peut être annulée en appelant `next(false)`.
 
 ### Le flux de résolution de navigation complet
 
 1. La navigation est demandée.
-2. Appel de la sécurisation de sortie des composants désactivés (ceux que l'on va quitter).
-3. Appel des sécurisations globales `beforeEach`.
-4. Appel des sécurisations `beforeRouteUpdate` pour les composants ré-utilisés (2.2+).
+2. Appel de la interception de sortie des composants désactivés (ceux que l'on va quitter).
+3. Appel des interceptions globales `beforeEach`.
+4. Appel des interceptions `beforeRouteUpdate` pour les composants ré-utilisés (2.2+).
 5. Appel de `beforeEnter` dans la configuration de route.
 6. Résolution des composants de route asynchrones.
 7. Appel de `beforeRouteEnter` dans les composants activés (ceux où l'on va arriver).
-8. Appel des sécurisations `beforeResolve` (2.5+).
+8. Appel des interceptions `beforeResolve` (2.5+).
 9. Confirmation de la navigation.
 10. Appel des hooks globaux `afterEach`.
 11. Modification du DOM demandées.
-12. Appel des fonctions de rappel passées à `next` dans la sécurisation `beforeRouteEnter` avec l'instance instanciée.
+12. Appel des fonctions de rappel passées à `next` dans l'interception `beforeRouteEnter` avec l'instance instanciée.
