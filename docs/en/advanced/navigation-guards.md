@@ -120,15 +120,15 @@ Vous pouvez directement accéder à `this` à l'intérieur de `beforeRouteLeave`
 
 ### Le flux de résolution de navigation complet
 
-1. La navigation est demandée,
-2. Appel de la sécurisation de sortie des composants désactivés (ceux que l'on va quitter),
-3. Appel des sécurisations globales `beforeEach`,
-4. Appel des sécurisations `beforeRouteUpdate` pour les composants ré-utilisés (2.2+),
-5. Appel de `beforeEnter` dans la configuration de route,
-6. Résolution des composants de route asynchrones,
-7. Appel de `beforeRouteEnter` dans les composants activés (ceux où l'on va arriver),
-8. Appel des sécurisations `beforeResolve` (2.5+),
-9. Confirmation de la navigation,
-10. Appel des hooks globaux `afterEach`,
-11. Modification du DOM demandées,
+1. La navigation est demandée.
+2. Appel de la sécurisation de sortie des composants désactivés (ceux que l'on va quitter).
+3. Appel des sécurisations globales `beforeEach`.
+4. Appel des sécurisations `beforeRouteUpdate` pour les composants ré-utilisés (2.2+).
+5. Appel de `beforeEnter` dans la configuration de route.
+6. Résolution des composants de route asynchrones.
+7. Appel de `beforeRouteEnter` dans les composants activés (ceux où l'on va arriver).
+8. Appel des sécurisations `beforeResolve` (2.5+).
+9. Confirmation de la navigation.
+10. Appel des hooks globaux `afterEach`.
+11. Modification du DOM demandées.
 12. Appel des fonctions de rappel passées à `next` dans la sécurisation `beforeRouteEnter` avec l'instance instanciée.
