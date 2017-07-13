@@ -13,7 +13,7 @@
   - [Routes nommées](essentials/named-routes.md)
   - [Vues nommées](essentials/named-views.md)
   - [Redirection et alias](essentials/redirect-and-alias.md)
-  - [Passing Props to Route Components (En)](essentials/passing-props.md)
+  - [Passage de props aux composants de route](essentials/passing-props.md)
   - [HTML5 History Mode (En)](essentials/history-mode.md)
 - Avancé
   - [Navigation Guards (En)](advanced/navigation-guards.md)
