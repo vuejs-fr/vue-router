@@ -50,7 +50,7 @@ var http = require("http"),
 http.createServer(function (req, res) {
   fs.readFile("index.htm", "utf-8", function (err, content) {
     if (err) {
-      console.log('We cannot open "index.htm" view file.');
+      console.log('Impossible d'ouvrir le fichie "index.htm".');
     }
 
     res.writeHead(200, {
@@ -119,4 +119,4 @@ const router = new VueRouter({
 })
 ```
 
-Une alternative possible, si vous utilisez un serveur Node.js, est d'implémenter ce mécanisme de substitution en utilisant le routeur côté serveur pour vérifier la concordance des demande d'URL entrante. Si la route ne concorde avec rien, la page est inexistante. Consultez l'[utilisation de Vue côté serveur](https://ssr.vuejs.org/en/) pour plus d'informations.
+Une alternative possible, si vous utilisez un serveur Node.js, est d'implémenter ce mécanisme de substitution en utilisant le routeur côté serveur pour vérifier la concordance des demande d'URL entrante. Si la route ne concorde avec rien, la page est inexistante. Consultez l'[utilisation de Vue côté serveur](https://ssr.vuejs.org/fr/) pour plus d'informations.
