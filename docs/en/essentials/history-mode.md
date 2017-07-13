@@ -15,7 +15,11 @@ Quand vous utilisez le mode historique l'URL ressemblera a n'importe quelle URL 
 
 Cependant, un problème apparaît ici. Si votre application est une application monopage cliente, sans une configuration serveur adaptée, les utilisateurs tomberons sur une page d'erreur 404 en tantant d'accéder à `http://oursite.com/user/id` directement dans leur navigateur. Maintenant ça craint.
 
+<<<<<<< HEAD
 Ne vous inquiétez pas : pour résoudre ce problème, il vous suffit d'ajouter une route à votre serveur prenant en compte toutes les adresses demandées. Si l'URL demandé ne concorde avec aucun fichier statique, alors il doit toujours renvoyer la page `index.html` où votre application doit se lancer. De nouveau magnifique !
+=======
+Not to worry: To fix the issue, all you need to do is add a simple catch-all fallback route to your server. If the URL doesn't match any static assets, it should serve the same `index.html` page that your app lives in. Beautiful, again!
+>>>>>>> working
 
 ## Exemple de configurations serveur
 
