@@ -1,6 +1,6 @@
 # Mode historique de HTML5
 
-Le mode par défaut de `vue-router` est le _mode hashe_. Il utilise la partie hash de l'URL pour simuler une URL complète et ainsi ne pas recharger la page quand l'URL change.
+Le mode par défaut de `vue-router` est le _mode hash_. Il utilise la partie hash de l'URL pour simuler une URL complète et ainsi ne pas recharger la page quand l'URL change.
 
 Pour se passer du hash, nous pouvons prendre en main le **mode historique** qui va utiliser l'API `history.pushState` pour réaliser de la navigation d'URL sans recharger la page :
 
@@ -11,15 +11,11 @@ const router = new VueRouter({
 })
 ```
 
-Quand vous utilisez le mode historique l'URL ressemblera a n'importe quelle URL normale. Par ex. `http://oursite.com/user/id`. Magnifique !
+Quand vous utilisez le mode historique, l'URL ressemblera a n'importe quelle URL normale. Par ex. `http://oursite.com/user/id`. Magnifique !
 
-Cependant, un problème apparaît ici. Si votre application est une application monopage cliente, sans une configuration serveur adaptée, les utilisateurs tomberons sur une page d'erreur 404 en tantant d'accéder à `http://oursite.com/user/id` directement dans leur navigateur. Maintenant ça craint.
+Cependant, un problème apparaît si votre application est une application monopage cliente. Sans une configuration serveur adaptée, les utilisateurs tomberons sur une page d'erreur 404 en tentant d'accéder à `http://oursite.com/user/id` directement dans leur navigateur. Maintenant ça craint.
 
-<<<<<<< HEAD
-Ne vous inquiétez pas : pour résoudre ce problème, il vous suffit d'ajouter une route à votre serveur prenant en compte toutes les adresses demandées. Si l'URL demandé ne concorde avec aucun fichier statique, alors il doit toujours renvoyer la page `index.html` où votre application doit se lancer. De nouveau magnifique !
-=======
-Not to worry: To fix the issue, all you need to do is add a simple catch-all fallback route to your server. If the URL doesn't match any static assets, it should serve the same `index.html` page that your app lives in. Beautiful, again!
->>>>>>> working
+Ne vous inquiétez pas. Pour résoudre ce problème, il vous suffit d'ajouter une route à votre serveur prenant en compte toutes les adresses demandées. Si l'URL demandée ne concorde avec aucun fichier statique, alors il doit toujours renvoyer la page `index.html` qui contient le code de votre application. De nouveau magnifique !
 
 ## Exemple de configurations serveur
 
@@ -70,7 +66,7 @@ http.createServer(function (req, res) {
 
 #### Node.js avec Express
 
-Pour Node.js / Express, vous pouvez utiliser le [middleware connect-history-api-fallback](https://github.com/bripkens/connect-history-api-fallback).
+Pour Node.js avec Express, vous pouvez utiliser le [middleware connect-history-api-fallback](https://github.com/bripkens/connect-history-api-fallback).
 
 #### Internet Information Services (IIS)
 
@@ -112,7 +108,7 @@ rewrite {
 
 ## Limitation
 
-Il y a une limitation a ceci : votre serveur ne renverra plus les erreurs 404 des chemins qui ne sont pas trouvés puisqu'il va servir à présent le fichier `index.html`. Pour contourner ce problème, vous pouvez implémenter une route concordant avec toutes les adresses en 404 dans votre application Vue :
+Il y a une limitation a tout ceci. Votre serveur ne renverra plus les erreurs 404 des chemins qui ne sont pas trouvés puisqu'il va servir à présent le fichier `index.html`. Pour contourner ce problème, vous pouvez implémenter une route concordant avec toutes les adresses en 404 dans votre application Vue :
 
 ``` js
 const router = new VueRouter({
@@ -123,4 +119,4 @@ const router = new VueRouter({
 })
 ```
 
-Une arternative possible, si vous utilisez un serveur Node.js, est d'implémenter ce mécansisme de substitution en utilisant le routeur côté serveur pour vérifier la concordance des demande d'URL entrante qui correspondrait à une route inexistante. Consultez l'[utilisation de Vue côté serveur](https://ssr.vuejs.org/en/) pour plus d'informations.
+Une alternative possible, si vous utilisez un serveur Node.js, est d'implémenter ce mécanisme de substitution en utilisant le routeur côté serveur pour vérifier la concordance des demande d'URL entrante. Si la route ne concorde avec rien, la page est inexistante. Consultez l'[utilisation de Vue côté serveur](https://ssr.vuejs.org/en/) pour plus d'informations.
