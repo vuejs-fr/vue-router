@@ -1,8 +1,8 @@
-# HTML5 History Mode (En) <br><br> *Cette page est en cours de traduction française. Revenez une autre fois pour lire une traduction achevée ou [participez à la traduction française ici](https://github.com/vuejs-fr/vue-router).*
+# Mode historique de HTML5
 
-The default mode for `vue-router` is _hash mode_ - it uses the URL hash to simulate a full URL so that the page won't be reloaded when the URL changes.
+Le mode par défaut de `vue-router` est le _mode hashe_. Il utilise la partie hash de l'URL pour simuler une URL complète et ainsi ne pas recharger la page quand l'URL change.
 
-To get rid of the hash, we can use the router's **history mode**, which leverages the `history.pushState` API to achieve URL navigation without a page reload:
+Pour se passer du hash, nous pouvons prendre en main le **mode historique** qui va utiliser l'API `history.pushState` pour réaliser de la navigation d'URL sans recharger la page :
 
 ``` js
 const router = new VueRouter({
@@ -11,13 +11,13 @@ const router = new VueRouter({
 })
 ```
 
-When using history mode, the URL will look "normal," e.g. `http://oursite.com/user/id`. Beautiful!
+Quand vous utilisez le mode historique l'URL ressemblera a n'importe quelle URL normale. Par ex. `http://oursite.com/user/id`. Magnifique !
 
-Here comes a problem, though: Since our app is a single page client side app, without a proper server configuration, the users will get a 404 error if they access `http://oursite.com/user/id` directly in their browser. Now that's ugly.
+Cependant, un problème apparaît ici. Si votre application est une application monopage cliente, sans une configuration serveur adaptée, les utilisateurs tomberons sur une page d'erreur 404 en tantant d'accéder à `http://oursite.com/user/id` directement dans leur navigateur. Maintenant ça craint.
 
-Not to worry: To fix the issue, all you need to do is add a simple catch-all fallback route to your server. If the URL doesn't match any static assets, it should serve the same `index.html` page that your app lives in. Beautiful, again! 
+Ne vous inquiétez pas : pour résoudre ce problème, il vous suffit d'ajouter une route à votre serveur prenant en compte toutes les adresses demandées. Si l'URL demandé ne concorde avec aucun fichier statique, alors il doit toujours renvoyer la page `index.html` où votre application doit se lancer. De nouveau magnifique !
 
-## Example Server Configurations
+## Exemple de configurations serveur
 
 #### Apache
 
@@ -40,11 +40,36 @@ location / {
 }
 ```
 
-#### Node.js (Express)
+#### Node.js natif
 
-For Node.js/Express, consider using [connect-history-api-fallback middleware](https://github.com/bripkens/connect-history-api-fallback).
+```js
+var http = require("http"),
+  fs = require("fs"),
+  httpPort = 80;
+
+http.createServer(function (req, res) {
+  fs.readFile("index.htm", "utf-8", function (err, content) {
+    if (err) {
+      console.log('We cannot open "index.htm" view file.');
+    }
+
+    res.writeHead(200, {
+      "Content-Type": "text/html; charset=utf-8"
+    });
+
+    res.end(content);
+  });
+}).listen(httpPort, function () {
+  console.log("Server listening on: http://localhost:%s", httpPort);
+});
+```
+
+#### Node.js avec Express
+
+Pour Node.js / Express, vous pouvez utiliser le [middleware connect-history-api-fallback](https://github.com/bripkens/connect-history-api-fallback).
 
 #### Internet Information Services (IIS)
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
@@ -61,10 +86,10 @@ For Node.js/Express, consider using [connect-history-api-fallback middleware](ht
         </rule>
       </rules>
     </rewrite>
-      <httpErrors>     
-          <remove statusCode="404" subStatusCode="-1" />                
+      <httpErrors>
+          <remove statusCode="404" subStatusCode="-1" />
           <remove statusCode="500" subStatusCode="-1" />
-          <error statusCode="404" path="/survey/notfound" responseMode="ExecuteURL" />                
+          <error statusCode="404" path="/survey/notfound" responseMode="ExecuteURL" />
           <error statusCode="500" path="/survey/error" responseMode="ExecuteURL" />
       </httpErrors>
       <modules runAllManagedModulesForAllRequests="true"/>
@@ -73,6 +98,7 @@ For Node.js/Express, consider using [connect-history-api-fallback middleware](ht
 ```
 
 #### Caddy
+
 ```
 rewrite {
     regexp .*
@@ -80,9 +106,9 @@ rewrite {
 }
 ```
 
-## Caveat
+## Limitation
 
-There is a caveat to this: Your server will no longer report 404 errors as all not-found paths now serve up your `index.html` file. To get around the issue, you should implement a catch-all route within your Vue app to show a 404 page:
+Il y a une limitation a ceci : votre serveur ne renverra plus les erreurs 404 des chemins qui ne sont pas trouvés puisqu'il va servir à présent le fichier `index.html`. Pour contourner ce problème, vous pouvez implémenter une route concordant avec toutes les adresses en 404 dans votre application Vue :
 
 ``` js
 const router = new VueRouter({
@@ -93,4 +119,4 @@ const router = new VueRouter({
 })
 ```
 
-Alternatively, if you are using a Node.js server, you can implement the fallback by using the router on the server side to match the incoming URL and respond with 404 if no route is matched.
+Une arternative possible, si vous utilisez un serveur Node.js, est d'implémenter ce mécansisme de substitution en utilisant le routeur côté serveur pour vérifier la concordance des demande d'URL entrante qui correspondrait à une route inexistante. Consultez l'[utilisation de Vue côté serveur](https://ssr.vuejs.org/en/) pour plus d'informations.
