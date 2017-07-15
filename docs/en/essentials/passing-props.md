@@ -46,7 +46,7 @@ Quand `props` est mis à `true`, le `route.params` est remplis en tant que props
 
 ### Mode objet
 
-Quand `props` est un objet, cela alimenter les props de celui-ci. Utile quan les props sont statiques.
+Quand `props` est un objet, cela alimente les props de celui-ci. Utile quand les props sont statiques.
 
 ``` js
 const router = new VueRouter({
