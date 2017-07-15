@@ -2,7 +2,7 @@
 
 Le mode par défaut de `vue-router` est le _mode hash_. Il utilise la partie hash de l'URL pour simuler une URL complète et ainsi ne pas recharger la page quand l'URL change.
 
-Pour se passer du hash, nous pouvons prendre en main le **mode historique** qui va utiliser l'API `history.pushState` pour réaliser de la navigation d'URL sans recharger la page :
+Pour se passer du hash, nous pouvons utiliser le **mode historique** qui utilisera l'API `history.pushState` afin de permettre une navigation sans rechargement de page :
 
 ``` js
 const router = new VueRouter({
@@ -50,7 +50,7 @@ const httpPort = 80
 http.createServer(function (req, res) {
   fs.readFile("index.htm", "utf-8", function (err, content) {
     if (err) {
-      console.log('Impossible d'ouvrir le fichie "index.htm".')
+      console.log('Impossible d\'ouvrir le fichier "index.htm"')
     }
 
     res.writeHead(200, {
