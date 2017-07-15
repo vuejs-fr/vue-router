@@ -29,7 +29,7 @@ Par exemple, avec la configuration de route ci-dessous, l'URL `/foo/bar` va conc
 
 Tous les registres concordant avec une route sont exposés dans l'objet `$route` (ainsi que les objets de route dans les sécurisations de navigation) dans le tableau `$route.matched`. Donc, nous devons itérer à travers `$route.matched` pour vérifier les champs meta dans les registres de route.
 
-Un exemple concret est la vérification d'un champ meta dans une sécurisation de navigation globale :
+Un exemple concret est la vérification d'un champ meta dans une interception de navigation globale :
 
 ``` js
 router.beforeEach((to, from, next) => {
