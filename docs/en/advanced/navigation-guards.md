@@ -1,4 +1,4 @@
-# Interceptions de navigation
+# Intercepteurs de navigation
 
 Comme le nom le suggère, l'interception de navigation fournie par `vue-router` est principalement utilisée pour intercepter la navigation avec des redirections ou des annulations d'accès. Il y a plusieurs hooks disponibles lors du processus de navigation : globaux, par route ou par composant.
 

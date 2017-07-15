@@ -16,7 +16,7 @@
   - [Passing Props to Route Components (En)](essentials/passing-props.md)
   - [HTML5 History Mode (En)](essentials/history-mode.md)
 - Avancé
-  - [Interceptions de navigation](advanced/navigation-guards.md)
+  - [Intercepteurs de navigation](advanced/navigation-guards.md)
   - [Route Meta Fields (En)](advanced/meta.md)
   - [Transitions (En)](advanced/transitions.md)
   - [Récupération de données](advanced/data-fetching.md)

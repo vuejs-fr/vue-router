@@ -26,7 +26,7 @@
 - **router.beforeResolve(guard)** (2.5.0+)
 - **router.afterEach(hook)**
 
-  Ajout des interceptions globales de navigation. Voir les [Interceptions de navigation](../advanced/navigation-guards.md).
+  Ajout des interceptions globales de navigation. Voir les [Intercepteurs de navigation](../advanced/navigation-guards.md).
 
   Dans la version 2.5.0+, ces trois méthodes retournent une fonction qui enlève les fonctions d'interception et hooks enregistrés.
 
