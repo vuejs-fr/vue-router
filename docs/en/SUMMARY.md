@@ -17,7 +17,7 @@
   - [Mode historique de HTML5](essentials/history-mode.md)
 - Avancé
   - [Navigation Guards (En)](advanced/navigation-guards.md)
-  - [Route Meta Fields (En)](advanced/meta.md)
+  - [Champs meta de route](advanced/meta.md)
   - [Transitions (En)](advanced/transitions.md)
   - [Récupération de données](advanced/data-fetching.md)
   - [Comportement du défilement](advanced/scroll-behavior.md)
