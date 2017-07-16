@@ -28,9 +28,9 @@ Chaque fonction d'interception reçoit trois arguments :
 
   - **`next()`**: se déplacer jusqu'au prochain hook du workflow. S'il ne reste aucun hooks, la navigation est **confirmée**.
 
-  - **`next(false)`**: annuler la navigation courante. Si l'URL du navigateur avait changée (manuellement par l'utilisateur ou via le bouton retour du navigateur), elle sera remise à sa valeur de route de `from`.
+  - **`next(false)`**: annuler la navigation courante. Si l'URL du navigateur avait changé (manuellement par l'utilisateur ou via le bouton retour du navigateur), il sera remis à sa valeur de route de `from`.
 
-  - **`next('/')` ou `next({ path: '/' })`**: redirige vers la nouvelle URL. La navigation courante va être arrêtée et une nouvelle va se lancer.
+  - **`next('/')` ou `next({ path: '/' })`**: redirige vers le nouvel URL. La navigation courante va être arrêtée et une nouvelle va se lancer.
 
   - **`next(error)`**: (2.4.0+) si l'argument passé à `next` est une instance de `Error`, la navigation va s'arrêter et l'erreur sera passée aux fonctions de rappel via `router.onError()`.
 

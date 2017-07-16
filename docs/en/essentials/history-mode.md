@@ -1,6 +1,6 @@
 # Mode historique de HTML5
 
-Le mode par défaut de `vue-router` est le _mode hash_. Il utilise la partie hash de l'URL pour simuler une URL complète et ainsi ne pas recharger la page quand l'URL change.
+Le mode par défaut de `vue-router` est le _mode hash_. Il utilise la partie hash de l'URL pour simuler un URL complet et ainsi ne pas recharger la page quand l'URL change.
 
 Pour se passer du hash, nous pouvons utiliser le **mode historique** qui utilisera l'API `history.pushState` afin de permettre une navigation sans rechargement de page :
 
@@ -11,7 +11,7 @@ const router = new VueRouter({
 })
 ```
 
-Quand vous utilisez le mode historique, l'URL ressemblera a n'importe quelle URL normale. Par ex. `http://oursite.com/user/id`. Magnifique !
+Quand vous utilisez le mode historique, l'URL ressemblera a n'importe quel URL normal. Par ex. `http://oursite.com/user/id`. Magnifique !
 
 Cependant, un problème apparaît si votre application est une application monopage cliente. Sans une configuration serveur adaptée, les utilisateurs tomberons sur une page d'erreur 404 en tentant d'accéder à `http://oursite.com/user/id` directement dans leur navigateur. Maintenant ça craint.
 
@@ -119,4 +119,4 @@ const router = new VueRouter({
 })
 ```
 
-Une alternative possible, si vous utilisez un serveur Node.js, est d'implémenter ce mécanisme de substitution en utilisant le routeur côté serveur pour vérifier la concordance des demande d'URL entrante. Si la route ne concorde avec rien, la page est inexistante. Consultez l'[utilisation de Vue côté serveur](https://ssr.vuejs.org/fr/) pour plus d'informations.
+Une alternative possible, si vous utilisez un serveur Node.js, est d'implémenter ce mécanisme de substitution en utilisant le routeur côté serveur pour vérifier la concordance des demande d'URL entrant. Si la route ne concorde avec rien, la page est inexistante. Consultez l'[utilisation de Vue côté serveur](https://ssr.vuejs.org/fr/) pour plus d'informations.

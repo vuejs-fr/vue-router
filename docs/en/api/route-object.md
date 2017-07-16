@@ -1,6 +1,6 @@
 # L'objet `Route`
 
-Un **objet `Route`** représente l'état actuel de la route active. Il contient des informations analysées à propos de l'URL courante et **les itinéraires de route** appariés par l'URL.
+Un **objet `Route`** représente l'état actuel de la route active. Il contient des informations analysées à propos de l'URL courant et **les itinéraires de route** appariés par l'URL.
 
 L'objet `Route` est immutable. Chaque navigation qui se déroule avec succès résultera en un nouvel objet `Route`.
 
@@ -60,7 +60,7 @@ L'objet `Route` peut être trouvé à plusieurs endroits :
 
   - type : `string`
 
-    L'URL entièrement résolue, incluant la requête et le hash.
+    L'URL entièrement résolu, incluant la requête et le hash.
 
 - **$route.matched**
 

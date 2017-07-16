@@ -5,7 +5,7 @@
 [https://unpkg.com/vue-router/dist/vue-router.js](https://unpkg.com/vue-router/dist/vue-router.js)
 
 <!--email_off-->
-[Unpkg.com](https://unpkg.com) fournit des liens CDN basés sur npm. Le lien ci-dessus pointera toujours vers la dernière version sur npm. Vous pouvez aussi utiliser un tag ou une version spécifique via une URL comme `https://unpkg.com/vue-router@2.0.0/dist/vue-router.js`.
+[Unpkg.com](https://unpkg.com) fournit des liens CDN basés sur npm. Le lien ci-dessus pointera toujours vers la dernière version sur npm. Vous pouvez aussi utiliser un tag ou une version spécifique via un URL comme `https://unpkg.com/vue-router@2.0.0/dist/vue-router.js`.
 <!--/email_off-->
 
 Incluez `vue-router` après Vue et l'installation sera automatique :

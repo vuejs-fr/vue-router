@@ -18,7 +18,7 @@
 - Avancé
   - [Intercepteurs de navigation](advanced/navigation-guards.md)
   - [Champs meta de route](advanced/meta.md)
-  - [Transitions (En)](advanced/transitions.md)
+  - [Transitions](advanced/transitions.md)
   - [Récupération de données](advanced/data-fetching.md)
   - [Comportement du défilement](advanced/scroll-behavior.md)
   - [Chargement à la volée](advanced/lazy-loading.md)

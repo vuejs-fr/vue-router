@@ -1,6 +1,6 @@
 # Passage de props aux composants de route
 
-Utiliser `$route` dans vos composants crée un couplage fort à la route qui va limiter la flexibilité du composant qui ne pourra être utilisé que par certaines URLs.
+Utiliser `$route` dans vos composants crée un couplage fort à la route qui va limiter la flexibilité du composant qui ne pourra être utilisé que par certains URL.
 
 Pour découpler un composant de son routeur, utilisez les props :
 
