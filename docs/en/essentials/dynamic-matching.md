@@ -53,7 +53,7 @@ const User = {
 }
 ```
 
-Ou utiliser la fonction de sécurisation `beforeRouteUpdate` introduite avec la 2.2 :
+Ou utiliser la fonction d'interception `beforeRouteUpdate` introduite avec la 2.2 :
 
 ``` js
 const User = {
