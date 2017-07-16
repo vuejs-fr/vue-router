@@ -14,7 +14,7 @@
   - [Vues nommées](essentials/named-views.md)
   - [Redirection et alias](essentials/redirect-and-alias.md)
   - [Passing Props to Route Components (En)](essentials/passing-props.md)
-  - [HTML5 History Mode (En)](essentials/history-mode.md)
+  - [Mode historique de HTML5](essentials/history-mode.md)
 - Avancé
   - [Navigation Guards (En)](advanced/navigation-guards.md)
   - [Route Meta Fields (En)](advanced/meta.md)
