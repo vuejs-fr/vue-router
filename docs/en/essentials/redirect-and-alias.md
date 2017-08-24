@@ -55,8 +55,4 @@ const router = new VueRouter({
 
 Un alias vous donne la liberté d'associer une structure d'interface utilisateur à un URL arbitraire, au lieu d'être contraint par une configuration de structure.
 
-<<<<<<< HEAD
 Pour d'autres utilisations avancées, jetez un œil à cet [exemple](https://github.com/vuejs/vue-router/blob/dev/examples/route-alias/app.js).
-=======
-For advanced usage, check out the [example](https://github.com/vuejs/vue-router/blob/dev/examples/route-alias/app.js).
->>>>>>> upstream/dev
