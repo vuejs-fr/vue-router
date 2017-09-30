@@ -18,7 +18,7 @@ import('./Foo.vue') // returns a Promise
 
 > Note: si vous utilisez Babel, vous aurez besoin d'ajouter le plugin [syntax-dynamic-import](http://babeljs.io/docs/plugins/syntax-dynamic-import/) de façon à ce que Babel puisse analyser correctement la syntaxe.
 
-En combinant les deux, on définit un composant asynchrone qui sera automatiquement fragmenté par webpack:
+En combinant les deux, on définit un composant asynchrone qui sera automatiquement scindé par webpack:
 
 ``` js
 const Foo = () => import('./Foo.vue')
